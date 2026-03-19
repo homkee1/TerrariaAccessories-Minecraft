@@ -8,10 +8,8 @@
 			"ClientboundContainerSetSlotPacketAccessor",
 			"CreativeSyncMixin",
 			"InventoryMenuMixin",
-			"LivingEntityMixin",
 			"PacketSyncMixin",
 			"PlayerEntityMixin",
-			"ServerEntityMixin",
 			"ServerPlayerMixin"
 		],
 		"injectors": {
