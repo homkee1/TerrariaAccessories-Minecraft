@@ -24,27 +24,14 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
 
     @Inject(method = "selectTab", at = @At("TAIL"))
     private void fixSlots(CreativeModeTab tab, CallbackInfo ci) {
-        // Проверяем, является ли выбранная вкладка инвентарем выживания
-        boolean isInventoryTab = tab.getType() == CreativeModeTab.Type.INVENTORY;
-
-        for (Slot slot : this.menu.slots) {
-            // В креативном меню (вкладка выживания) Minecraft создает SlotWrapper
-            // для каждого слота из InventoryMenu игрока.
-            // Наши визуальные слоты в InventoryMenu имеют индексы 46, 47, 48, 49.
-            int index = slot.getContainerSlot();
-
-            if (index >= 46 && index <= 49) {
-                SlotAccessor acc = (SlotAccessor) slot;
-                if (isInventoryTab) {
-                    // Перемещаем слоты в нужные координаты справа от персонажа
-                    int i = index - 46;
+        if (tab.getType() == CreativeModeTab.Type.INVENTORY) {
+            for (int i = 0; i < 4; i++) {
+                int slotIndex = 46 + i;
+                if (slotIndex < this.menu.slots.size()) {
+                    Slot slot = this.menu.slots.get(slotIndex);
+                    SlotAccessor acc = (SlotAccessor) slot;
                     acc.setX((i < 2) ? 126 : 144);
                     acc.setY((i % 2 == 0) ? 6 : 33);
-                } else {
-                    // Если это любая другая вкладка (Блоки, Поиск и т.д.) -
-                    // прячем слоты далеко за экран, чтобы они не перекрывали хотбар.
-                    acc.setX(-2000);
-                    acc.setY(-2000);
                 }
             }
         }
@@ -52,7 +39,6 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
 
     @Inject(method = "renderBg", at = @At("TAIL"))
     private void drawSlots(GuiGraphics guiGraphics, float f, int i, int j, CallbackInfo ci) {
-        // Исправляем ошибку static context: кастуем this к классу экрана
         CreativeModeInventoryScreen screen = (CreativeModeInventoryScreen) (Object) this;
 
         if (screen.isInventoryOpen()) {
@@ -65,7 +51,6 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
 
     @Unique
     private void drawBox(GuiGraphics g, int x, int y) {
-        // Используем this.leftPos и this.topPos (они доступны в AbstractContainerScreen)
         g.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_TEXTURE, this.leftPos + x - 1, this.topPos + y - 1, 18, 18);
     }
 }

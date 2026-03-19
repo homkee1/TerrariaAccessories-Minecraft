@@ -15,14 +15,17 @@ import net.minecraft.server.level.ServerPlayer;
 public class CreativeSyncMixin {
     @Shadow public ServerPlayer player;
 
-    @Inject(method = "handleSetCreativeModeSlot", at = @At("HEAD"))
+    @Inject(method = "handleSetCreativeModeSlot", at = @At("HEAD"), cancellable = true)
     private void syncVisualSlots(ServerboundSetCreativeModeSlotPacket packet, CallbackInfo ci) {
+        if (!this.player.isCreative()) return;
+
         int slotNum = packet.slotNum();
-        // Индексы наших слотов в InventoryMenu (46, 47, 48, 49)
         if (slotNum >= 46 && slotNum <= 49) {
             Slot slot = this.player.inventoryMenu.getSlot(slotNum);
-            slot.set(packet.itemStack()); // Принудительно ставим предмет на сервере
+            slot.set(packet.itemStack());
             this.player.inventoryMenu.broadcastChanges();
+
+            ci.cancel();
         }
     }
 }

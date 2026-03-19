@@ -17,16 +17,13 @@ public abstract class InventoryScreenMixin {
 			)
 	)
 	private void shiftPlayerModel(Args args) {
-		// Проверяем, что в методе действительно 10 аргументов (от 0 до 9)
 		if (args.size() >= 10) {
-			// Согласно твоему коду:
-			// args.get(1) это k + 26 (левая граница)
-			// args.get(3) это k + 75 (правая граница)
+			// args.get(1)левая граница
+			// args.get(3)правая граница
 
 			int currentX1 = args.get(1);
 			int currentX2 = args.get(3);
 
-			// Сдвигаем на 30 пикселей вправо, чтобы освободить место под новые слоты
 			args.set(1, currentX1 + 10);
 			args.set(3, currentX2 + 10);
 		}

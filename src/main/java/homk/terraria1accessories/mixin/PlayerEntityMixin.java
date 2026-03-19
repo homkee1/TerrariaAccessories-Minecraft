@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,15 +38,14 @@ public abstract class PlayerEntityMixin implements VisualArmorHolder {
 
 	@Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
 	private void loadVisualArmor(ValueInput input, CallbackInfo ci) {
-		// Используем listOrEmpty, как в ванильном коде 1.21.10
-		List<ItemStackWithSlot> list = (List<ItemStackWithSlot>) input.listOrEmpty("VisualArmor", ItemStackWithSlot.CODEC);
-		if (!list.isEmpty()) {
+		input.read("VisualArmor", ItemStackWithSlot.CODEC.listOf()).ifPresent(list -> {
 			this.visualArmor.clearContent();
 			for (ItemStackWithSlot entry : list) {
-				if (entry.slot() >= 0 && entry.slot() < 4) {
-					this.visualArmor.setItem(entry.slot(), entry.stack());
+				int slot = entry.slot();
+				if (slot >= 0 && slot < 4) {
+					this.visualArmor.setItem(slot, entry.stack());
 				}
 			}
-		}
+		});
 	}
 }

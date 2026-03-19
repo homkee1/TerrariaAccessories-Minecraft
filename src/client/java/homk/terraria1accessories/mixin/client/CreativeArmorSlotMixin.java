@@ -49,7 +49,6 @@ public abstract class CreativeArmorSlotMixin {
 	@Unique
 	private Slot createVanillaSlotWrapper(Slot target, int index, int x, int y) {
 		try {
-			// Ищем класс SlotWrapper среди внутренних классов CreativeModeInventoryScreen
 			Class<?> wrapperClass = null;
 			for (Class<?> inner : CreativeModeInventoryScreen.class.getDeclaredClasses()) {
 				if (inner.getSimpleName().equals("SlotWrapper")) {
@@ -58,12 +57,10 @@ public abstract class CreativeArmorSlotMixin {
 				}
 			}
 
-			// Если не нашли через getSimpleName (бывает в некоторых средах), пробуем прямой путь
 			if (wrapperClass == null) {
 				wrapperClass = Class.forName("net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen$SlotWrapper");
 			}
 
-			// Получаем конструктор. В декомпиляте он (Slot, int, int, int)
 			Constructor<?> constructor = wrapperClass.getDeclaredConstructor(Slot.class, int.class, int.class, int.class);
 			constructor.setAccessible(true);
 

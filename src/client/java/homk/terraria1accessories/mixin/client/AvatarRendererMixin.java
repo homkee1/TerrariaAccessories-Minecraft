@@ -15,7 +15,7 @@ public class AvatarRendererMixin {
 
 	@Inject(method = "extractRenderState", at = @At("TAIL"))
 	private void copyVisuals(net.minecraft.world.entity.Avatar avatar, AvatarRenderState state, float f, CallbackInfo ci) {
-		// Проверяем, является ли аватар игроком (так как у него наши слоты)
+
 		if (avatar instanceof Player player) {
 			VisualArmorHolder holder = (VisualArmorHolder) player;
 			VisualStateAccessor stateAccessor = (VisualStateAccessor) (Object) state;
