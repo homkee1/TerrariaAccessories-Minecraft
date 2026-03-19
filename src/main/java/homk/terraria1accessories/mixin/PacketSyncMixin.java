@@ -1,7 +1,6 @@
 package homk.terraria1accessories.mixin;
 
-import homk.terraria1accessories.network.DummyPayload;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import homk.terraria1accessories.Terraria1accessories;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundContainerSetContentPacket;
@@ -28,14 +27,15 @@ public abstract class PacketSyncMixin {
     @ModifyVariable(method = "send(Lnet/minecraft/network/protocol/Packet;)V", at = @At("HEAD"), argsOnly = true)
     private Packet<?> modifyContainerContentPacket(Packet<?> packet) {
         ServerPlayer player = getPlayer();
-        if (player != null && !ServerPlayNetworking.canSend(player, DummyPayload.TYPE)) {
+
+        // Если игрок еще НЕ подтвердил наличие мода (его нет в списке)
+        if (player != null && !Terraria1accessories.MODDED_PLAYERS.contains(player.getUUID())) {
             if (packet instanceof ClientboundContainerSetContentPacket contentPacket) {
                 ClientboundContainerSetContentPacketAccessor acc = (ClientboundContainerSetContentPacketAccessor) (Object) contentPacket;
 
                 if (acc.callGetContainerId() == 0 && acc.callGetItems().size() > 46) {
                     NonNullList<ItemStack> trimmed = NonNullList.create();
                     trimmed.addAll(acc.callGetItems().subList(0, 46));
-
                     return new ClientboundContainerSetContentPacket(0, acc.callGetStateId(), trimmed, acc.callGetCarriedItem());
                 }
             }
@@ -46,10 +46,10 @@ public abstract class PacketSyncMixin {
     @Inject(method = "send(Lnet/minecraft/network/protocol/Packet;)V", at = @At("HEAD"), cancellable = true)
     private void cancelSlotPacket(Packet<?> packet, CallbackInfo ci) {
         ServerPlayer player = getPlayer();
-        if (player != null && !ServerPlayNetworking.canSend(player, DummyPayload.TYPE)) {
+        // Если игрока нет в списке модовых - блокируем пакеты для слотов 46+
+        if (player != null && !Terraria1accessories.MODDED_PLAYERS.contains(player.getUUID())) {
             if (packet instanceof ClientboundContainerSetSlotPacket slotPacket) {
                 ClientboundContainerSetSlotPacketAccessor acc = (ClientboundContainerSetSlotPacketAccessor) (Object) slotPacket;
-
                 if (acc.callGetContainerId() == 0 && acc.callGetSlot() >= 46) {
                     ci.cancel();
                 }
