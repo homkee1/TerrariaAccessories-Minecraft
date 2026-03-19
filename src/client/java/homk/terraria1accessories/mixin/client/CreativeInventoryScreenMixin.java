@@ -18,6 +18,10 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
     @Unique
     private static final ResourceLocation SLOT_TEXTURE = ResourceLocation.withDefaultNamespace("container/slot");
 
+    @Unique private static final int RIGHT_COLUMN_X = 172;
+    @Unique private static final int START_Y = 6;
+    @Unique private static final int SLOT_SPACING = 18;
+
     public CreativeInventoryScreenMixin(CreativeModeInventoryScreen.ItemPickerMenu menu, net.minecraft.world.entity.player.Inventory inventory, net.minecraft.network.chat.Component title) {
         super(menu, inventory, title);
     }
@@ -30,8 +34,9 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
                 if (slotIndex < this.menu.slots.size()) {
                     Slot slot = this.menu.slots.get(slotIndex);
                     SlotAccessor acc = (SlotAccessor) slot;
-                    acc.setX((i < 2) ? 126 : 144);
-                    acc.setY((i % 2 == 0) ? 6 : 33);
+
+                    acc.setX(RIGHT_COLUMN_X);
+                    acc.setY(START_Y + (i * SLOT_SPACING));
                 }
             }
         }
@@ -41,16 +46,17 @@ public abstract class CreativeInventoryScreenMixin extends net.minecraft.client.
     private void drawSlots(GuiGraphics guiGraphics, float f, int i, int j, CallbackInfo ci) {
         CreativeModeInventoryScreen screen = (CreativeModeInventoryScreen) (Object) this;
 
+
         if (screen.isInventoryOpen()) {
-            drawBox(guiGraphics, 126, 6);
-            drawBox(guiGraphics, 126, 33);
-            drawBox(guiGraphics, 144, 6);
-            drawBox(guiGraphics, 144, 33);
+            for (int k = 0; k < 4; k++) {
+                drawBox(guiGraphics, RIGHT_COLUMN_X, START_Y + (k * SLOT_SPACING));
+            }
         }
     }
 
     @Unique
     private void drawBox(GuiGraphics g, int x, int y) {
+
         g.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_TEXTURE, this.leftPos + x - 1, this.topPos + y - 1, 18, 18);
     }
 }

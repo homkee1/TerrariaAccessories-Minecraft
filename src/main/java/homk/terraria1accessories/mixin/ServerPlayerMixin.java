@@ -12,9 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin {
 
-	/**
-	 * ЛОГИКА ПРИ СМЕРТИ: Копируем аксессуары из старого тела игрока в новое.
-	 */
 	@Inject(method = "restoreFrom", at = @At("HEAD"))
 	private void copyVisualArmorOnRespawn(ServerPlayer oldPlayer, boolean alive, CallbackInfo ci) {
 		SimpleContainer oldInv = ((VisualArmorHolder) oldPlayer).getVisualArmorContainer();
@@ -27,9 +24,6 @@ public abstract class ServerPlayerMixin {
 		}
 	}
 
-	/**
-	 * ЛОГИКА ПРИ ВЫХОДЕ: Удаляем UUID игрока из списка доверенных (модовых).
-	 */
 	@Inject(method = "disconnect", at = @At("HEAD"))
 	private void onDisconnect(CallbackInfo ci) {
 		ServerPlayer player = (ServerPlayer) (Object) this;

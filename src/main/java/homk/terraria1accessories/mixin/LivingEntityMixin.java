@@ -5,5 +5,4 @@ import net.minecraft.world.entity.LivingEntity;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-    // УДАЛИ ВСЕ ИНЖЕКТЫ ОТСЮДА
 }

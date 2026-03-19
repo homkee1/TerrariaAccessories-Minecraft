@@ -42,10 +42,6 @@ public abstract class PacketSyncMixin {
         if (packet instanceof ClientboundSetEquipmentPacket equipPacket) {
             Entity wearer = receiver.level().getEntity(equipPacket.getEntity());
 
-            // КРИТИЧЕСКОЕ ИЗМЕНЕНИЕ:
-            // Подменяем пакет ТОЛЬКО если мы отправляем его ДРУГОМУ игроку (wearer != receiver).
-            // Самому себе мы должны отправлять ПРАВДУ (что надето на самом деле),
-            // иначе инвентарь начнет "дублировать" предметы.
             if (wearer != null && wearer != receiver && wearer instanceof VisualArmorHolder holder) {
                 List<Pair<EquipmentSlot, ItemStack>> slots = new ArrayList<>(equipPacket.getSlots());
                 boolean changed = false;
@@ -73,7 +69,6 @@ public abstract class PacketSyncMixin {
             }
         }
 
-        // Логика скрытия слотов для игроков без мода (остается без изменений)
         if (!Terraria1accessories.MODDED_PLAYERS.contains(receiver.getUUID())) {
             if (packet instanceof ClientboundContainerSetContentPacket contentPacket) {
                 ClientboundContainerSetContentPacketAccessor acc = (ClientboundContainerSetContentPacketAccessor) (Object) contentPacket;

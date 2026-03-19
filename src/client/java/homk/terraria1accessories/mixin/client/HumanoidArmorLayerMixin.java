@@ -26,9 +26,6 @@ public abstract class HumanoidArmorLayerMixin {
 
 		if (idx != -1) {
 			ItemStack visual = accessor.getVisualArmor(idx);
-			// Если визуальный слот не пуст, возвращаем его для рендера.
-			// 'original' при этом — это настоящая броня, она не будет участвовать в рендере,
-			// но её логика (защита) останется нетронутой в коде сервера.
 			if (!visual.isEmpty()) {
 				return visual;
 			}

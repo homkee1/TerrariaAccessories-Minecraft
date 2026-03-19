@@ -59,11 +59,13 @@ public abstract class InventoryMenuMixin {
 						broadcastVisualChange(sp, targetSlot, stack);
 					}
 				}
+
 				@Override
 				public boolean mayPlace(ItemStack stack) {
 					Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
 					return equippable != null && equippable.slot() == targetSlot;
 				}
+
 				@Override
 				public ResourceLocation getNoItemIcon() {
 					return icon;
@@ -104,7 +106,8 @@ public abstract class InventoryMenuMixin {
 							}
 						}
 					}
-				} else if (index >= 46 && index <= 49) {
+				}
+				else if (index >= 46 && index <= 49) {
 					if (!menu.callMoveItemStackTo(stack, 9, 45, false)) {
 						cir.setReturnValue(ItemStack.EMPTY);
 						return;
@@ -122,17 +125,20 @@ public abstract class InventoryMenuMixin {
 	}
 
 	@Unique
-	private void broadcastVisualChange(ServerPlayer player, EquipmentSlot slot, ItemStack stack) {
-		// Создаем пакет для других игроков
+	private void broadcastVisualChange(ServerPlayer player, EquipmentSlot slot, ItemStack visualStack) {
+		ItemStack toSend;
+
+		if (visualStack.isEmpty()) {
+			toSend = player.getItemBySlot(slot).copy();
+		} else {
+			toSend = visualStack.copy();
+		}
+
 		ClientboundSetEquipmentPacket packet = new ClientboundSetEquipmentPacket(
 				player.getId(),
-				List.of(Pair.of(slot, stack.copy()))
+				List.of(Pair.of(slot, toSend))
 		);
 
-		// УДАЛЕНО: player.connection.send(packet);
-		// Мы больше не шлем этот пакет самому себе, чтобы не дублировать слоты.
-
-		// Шлем пакет только тем, кто видит игрока
 		for (ServerPlayer tracker : PlayerLookup.tracking(player)) {
 			tracker.connection.send(packet);
 		}
