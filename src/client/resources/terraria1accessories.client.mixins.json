@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "homk.terraria1accessories.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"AvatarRendererMixin",
+		"HumanoidRenderStateMixin",
+		"HumanoidArmorLayerMixin",
+		"InventoryScreenMixin",
+		"CreativeInventoryScreenMixin",
+		"CreativeArmorSlotMixin",
+		"SlotAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
