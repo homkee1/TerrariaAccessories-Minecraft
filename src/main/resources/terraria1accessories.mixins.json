@@ -1,18 +1,23 @@
-{
-	"required": true,
-	"package": "homk.terraria1accessories.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"PlayerEntityMixin",
-		"InventoryMenuMixin",
-		"AbstractContainerMenuAccessor",
-		"ServerPlayerMixin",
-		"CreativeSyncMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+	{
+		"required": true,
+		"package": "homk.terraria1accessories.mixin",
+		"compatibilityLevel": "JAVA_21",
+		"mixins": [
+			"AbstractContainerMenuAccessor",
+			"ClientboundContainerSetContentPacketAccessor",
+			"ClientboundContainerSetSlotPacketAccessor",
+			"CreativeSyncMixin",
+			"InventoryMenuMixin",
+			"LivingEntityMixin",
+			"PacketSyncMixin",
+			"PlayerEntityMixin",
+			"ServerEntityMixin",
+			"ServerPlayerMixin"
+		],
+		"injectors": {
+			"defaultRequire": 1
+		},
+		"overwrites": {
+			"requireAnnotations": true
+		}
 	}
-}

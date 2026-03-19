@@ -4,11 +4,10 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"AvatarRendererMixin",
-		"HumanoidRenderStateMixin",
-		"HumanoidArmorLayerMixin",
-		"InventoryScreenMixin",
 		"CreativeInventoryScreenMixin",
-		"CreativeArmorSlotMixin",
+		"HumanoidArmorLayerMixin",
+		"HumanoidRenderStateMixin",
+		"InventoryScreenMixin",
 		"SlotAccessor"
 	],
 	"injectors": {

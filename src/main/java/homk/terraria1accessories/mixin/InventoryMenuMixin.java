@@ -47,6 +47,12 @@ public abstract class InventoryMenuMixin {
 
 			menu.callAddSlot(new Slot(visualInv, i, 30, 8 + i * 18) {
 				@Override
+				public void set(ItemStack stack) {
+					super.set(stack);
+					// Принудительно уведомляем сервер, что визуальный слот изменился
+					player.onEquipItem(targetSlot, stack, stack);
+				}
+				@Override
 				public boolean mayPlace(ItemStack stack) {
 					Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
 					return equippable != null && equippable.slot() == targetSlot;
