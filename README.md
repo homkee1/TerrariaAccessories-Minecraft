@@ -51,7 +51,7 @@ result: u look like a biker, but gettin stats from netherite chestplate
 <div style="display: flex; gap: 20px; align-items: center; margin-top: 25px;">
   <div style="flex: 1;">
     <strong>"vanilla view, combat & death proof":</strong>
-    <p>server intercepts outgoing equipment packets and lies to vanilla players, telling them u r wearing vanity armor instead. plus, vanity items never lose durability in fights, and they behave exactly as they should on death without vanishing.</p>
+    <p>server intercepts outgoing equipment packets and lies to vanilla players, telling them u r wearing vanity armor instead. plus, vanity items never lose durability and cosmetics in fights.</p>
   </div>
   <div>
     <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/2.gif" width="420" alt="Vanilla view, combat and death proof">
