@@ -103,8 +103,7 @@ cd Terraria1accessories
 ./gradlew build
 ```
 
-compiled mod will be waiting for u in:
-`build/libs/terraria1accessories-<version>.jar`
+compiled mod will be waiting for u
 
 ```
 ———————————————————————————————————————————————————
