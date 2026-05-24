@@ -3,7 +3,7 @@
 > because running around in a generic netherite suit is so 2020. its time to get some actual drip.
 
 <div style="display: flex; gap: 20px; align-items: center; justify-content: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/1.gif?v=1" width="400" alt="Vanity slots showcase">
+  <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/1.gif" width="400" alt="Vanity slots showcase">
 </div>
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.2%2B-red?style=flat-square)
