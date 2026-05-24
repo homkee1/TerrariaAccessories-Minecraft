@@ -38,7 +38,6 @@ public class Terraria1accessories implements ModInitializer {
 
 		EntityTrackingEvents.START_TRACKING.register((trackedEntity, trackerPlayer) -> {
 			if (trackedEntity instanceof ServerPlayer wearer) {
-				// Шлем актуальный вид наблюдателю
 				syncPlayerToObserver(wearer, trackerPlayer);
 			}
 		});
