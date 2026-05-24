@@ -54,7 +54,7 @@ result: u look like a biker, but gettin stats from netherite chestplate
     <p>server intercepts outgoing equipment packets and lies to vanilla players, telling them u r wearing vanity armor instead. plus, vanity items never lose durability in fights, and they behave exactly as they should on death without vanishing.</p>
   </div>
   <div>
-    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/2.gif" width="220" alt="Vanilla view, combat and death proof">
+    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/2.gif" width="420" alt="Vanilla view, combat and death proof">
   </div>
 </div>
 
@@ -64,7 +64,7 @@ result: u look like a biker, but gettin stats from netherite chestplate
     <p>no clunky UI overlaps. the vanity slots r perfectly integrated right next to your inventory model inside the creative mode survival tab.</p>
   </div>
   <div>
-    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/images/1.jpg" width="220" alt="Creative tab screenshot">
+    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/images/1.jpg" width="320" alt="Creative tab screenshot">
   </div>
 </div>
 
