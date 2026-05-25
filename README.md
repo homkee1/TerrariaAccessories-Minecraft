@@ -1,9 +1,9 @@
-# 🎭 Terraria Visual Armor (Vanity Slots)
+# 🎭 Terraria Visual Armor (Слоты под косметическую броню)
 
-> because running around in a generic netherite suit is so 2020. its time to get some actual drip.
+> потому что бегать в дефолтном незеритовом сете — это уже прошлый век. пора обзавестись настоящим стилем.
 
 <div style="display: flex; gap: 20px; align-items: center; justify-content: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/1.gif" width="400" alt="Vanity slots showcase">
+  <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/1.gif" width="400" alt="Демонстрация косметических слотов">
 </div>
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.2%2B-red?style=flat-square)
@@ -13,74 +13,74 @@
 
 ———————————————————————————————————————————————————
 
-## 📑 Quick Navigation
+## 📑 Быстрая навигация
 
-- [what is this even](#what-is-this-even)
-- [why its actually good](#why-its-actually-good)
-- [how it actually works](#how-it-actually-works)
-- [Quick Start](#-quick-start)
-
-———————————————————————————————————————————————————
-
-## what is this even
-
-its literally adding **4 custom cosmetic slots** right next to your inventory armor. terraria solved this like 13 years ago and minecraft still refuses to do it.
-* put your high-stat armor (netherite) in real slots so u dont get 1-shot by a creeper
-* put your stylish armor (leather jacket, chainmail, or some weird headwear) in vanity slots
-* look cute while keeping those defense stats
-
-```
-real slot: netherite chestplate (stats: +8 armor, +3 toughness)
-cosmetic slot: leather jacket
-result: u look like a biker, but gettin stats from netherite chestplate
-```
+- [что это вообще такое](#что-это-вообще-такое)
+- [почему это действительно круто](#почему-это-действительно-круто)
+- [как это вообще работает](#как-это-вообще-работает)
+- [Быстрый старт](#-быстрый-старт)
 
 ———————————————————————————————————————————————————
 
-## why its actually good
+## что это вообще такое
 
-* **server-side compatibility:** vanilla players on a server **will actually see** your cosmetic outfit, even if they dont have the mod installed (ikr its crazy).
-* **no vanilla crashes:** safely hides custom slots from unmodded clients so they dont explode when opening inventories.
-* **combat safe:** cosmetic items **dont take durability damage** when u get hit. wear your rare sets without fear of losing them.
-* **creative mode support:** custom slots r nicely aligned on the right of the survival inventory tab in creative.
-* **death proof:** after death, your cosmetic armor doesnt drop by default (u can config this).
+Мод буквально добавляет **4 кастомных косметических слота** прямо рядом с вашей броней в инвентаре. В Terraria это реализовали еще 13 лет назад, а Minecraft до сих пор отказывается это делать.
+* кладите броню с высокими характеристиками (незеритовую) в обычные слоты, чтобы вас не ваншотнул крипер
+* кладите стильную одежду (кожаную куртку, кольчугу или какой-нибудь странный головной убор) в косметические слоты
+* выглядите мило, сохраняя при этом все защитные характеристики
+
+```
+обычный слот: незеритовый нагрудник (характеристики: +8 к броне, +3 к твердости)
+косметический слот: кожаная куртка
+результат: вы выглядите как байкер, но получаете характеристики от незеритового нагрудника
+```
+
+———————————————————————————————————————————————————
+
+## почему это действительно круто
+
+* **совместимость на стороне сервера:** игроки на ванильном клиенте **действительно будут видеть** ваш косметический наряд, даже если у них не установлен этот мод (да-да, это реально работает).
+* **никаких крашей на ваниле:** мод безопасно скрывает кастомные слоты от немодифицированных клиентов, чтобы их игра не «взрывалась» при открытии инвентаря.
+* **безопасно для боя:** косметические предметы **не тратят прочность**, когда по вам наносят урон. Носите свои редкие сеты, не боясь их сломать.
+* **поддержка творческого режима:** кастомные слоты аккуратно расположены справа от вкладки выживания в творческом инвентаре.
+* **защита при смерти:** после смерти ваша косметическая броня по умолчанию не выпадает (это можно настроить в конфиге).
 
 <div style="display: flex; gap: 20px; align-items: center; margin-top: 25px;">
   <div style="flex: 1;">
-    <strong>vanilla view & combat proof:</strong>
-    <p>server intercepts outgoing equipment packets and lies to vanilla players, telling them u r wearing vanity armor instead. plus, vanity items never lose durability in fights.</p>
+    <strong>ванильное отображение и безопасность в бою:</strong>
+    <p>сервер перехватывает исходящие пакеты экипировки и «обманывает» ванильных игроков, сообщая им, что на вас надета косметическая броня. кроме того, косметические предметы никогда не теряют прочность в сражениях.</p>
   </div>
   <div>
-    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/2.gif" width="420" alt="Vanilla view showcase">
+    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/gifs/2.gif" width="420" alt="Демонстрация ванильного отображения">
   </div>
 </div>
 
 <div style="display: flex; gap: 20px; align-items: center; margin-top: 25px;">
   <div style="flex: 1;">
-    <strong>creative tab interface:</strong>
-    <p>no clunky UI overlaps. the vanity slots r integrated right next to your inventory model inside the creative mode survival tab.</p>
+    <strong>интерфейс во вкладке выживания:</strong>
+    <p>никаких громоздких наложений интерфейса. косметические слоты встроены прямо рядом с моделью персонажа на вкладке выживания в творческом режиме.</p>
   </div>
   <div>
-    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/images/1.jpg" width="320" alt="Creative tab layout">
+    <img src="https://raw.githubusercontent.com/homkee1/TerrariaAccessories-Minecraft/assets/readme/images/1.jpg" width="320" alt="Макет вкладки творческого режима">
   </div>
 </div>
 
 ———————————————————————————————————————————————————
 
-## how it actually works
+## как это вообще работает
 
-the logic is actually pretty straightforward:
+Логика работы на самом деле довольно проста:
 
-1. **containers:** the mod adds a custom inventory container for your 4 vanity slots.
-2. **local rendering:** locally, the client reads from this container and overrides your player model render state to show vanity armor instead of real armor.
-3. **packet spoofing:** to make it work on servers, the server intercepts outgoing equipment packets (`SetEntityEquipPacket`). when sending updates to other players, it swaps your real armor with vanity. other players' clients think u r wearing vanity gear and render it normally.
+1. **контейнеры:** мод добавляет кастомный контейнер инвентаря для ваших 4 косметических слотов.
+2. **локальный рендеринг:** на стороне клиента игра считывает данные из этого контейнера и переопределяет состояние рендеринга модели игрока, чтобы отображать косметическую броню вместо настоящей.
+3. **спуфинг пакетов:** чтобы всё работало на серверах, сервер перехватывает исходящие пакеты экипировки (`SetEntityEquipPacket`). При отправке обновлений другим игрокам он подменяет вашу настоящую броню на косметическую. Клиенты других игроков думают, что вы носите косметическую экипировку, и отображают её обычным образом.
 
 ———————————————————————————————————————————————————
 
-## 🚀 Quick Start
+## 🚀 Быстрый старт
 
-### prerequisites
-* **java 21** (minecraft 1.21.2+ demands it)
+### требования
+* **java 21** (этого требует Minecraft 1.21.2+)
 * **fabric loader**
 
 ```bash
@@ -91,4 +91,4 @@ cd Terraria1accessories
 ./gradlew build
 ```
 
-compiled mod will be waiting for u in `build/libs/`
+Скомпилированный мод будет ждать вас в папке `build/libs/`
